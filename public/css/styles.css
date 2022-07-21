@@ -207,6 +207,7 @@ button:disabled {
     font-size: 0.8em;
   }
   .compose {
+    margin-top: 0;
     flex-direction: row-reverse;
   }
   .compose form {
