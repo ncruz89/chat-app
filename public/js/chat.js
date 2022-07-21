@@ -103,19 +103,23 @@ locBtn.addEventListener('click', () => {
 
   locBtn.setAttribute('disabled', 'disabled');
 
-  navigator.geolocation.getCurrentPosition((position) => {
-    socket.emit(
-      'sendLocation',
-      {
-        lat: position.coords.latitude,
-        long: position.coords.longitude,
-      },
-      (error) => {
-        if (error) return console.log(error);
-        locBtn.removeAttribute('disabled');
-      }
-    );
-  });
+  let locationConfirm = confirm('Share Location?');
+
+  if (locationConfirm) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      socket.emit(
+        'sendLocation',
+        {
+          lat: position.coords.latitude,
+          long: position.coords.longitude,
+        },
+        (error) => {
+          if (error) return console.log(error);
+          locBtn.removeAttribute('disabled');
+        }
+      );
+    });
+  }
 });
 
 socket.emit('join', { username, room }, (error) => {
