@@ -207,11 +207,12 @@ button:disabled {
   }
   button.formBtn-mobile {
     background: url('../img/send2.png') no-repeat;
+    background-size: 30px 30px;
     image-rendering: auto;
     margin: auto;
     padding: 0 5px 0 5px;
-    height: 30px;
     width: 30px;
+    height: 30px;
     font-size: 0;
     cursor: pointer;
   }
