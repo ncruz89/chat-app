@@ -203,13 +203,11 @@ button:disabled {
     justify-content: space-between;
   }
   .compose input {
-    margin: 0;
+    margin: 0 5px 0 0;
   }
   button.formBtn-mobile {
     background: url('../img/send2.png') no-repeat;
     image-rendering: auto;
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
     margin: auto;
     padding: 0 5px 0 5px;
     height: 30px;
@@ -219,13 +217,13 @@ button:disabled {
   }
   button.send-loc-mobile {
     background: url('../img/loc.png') no-repeat;
+    background-size: 30px 30px;
+    background-position: center;
     image-rendering: auto;
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
     margin: auto;
     padding: 0 0 0 5px;
-    height: 30px;
     width: 30px;
+    height: 30px;
     font-size: 0;
     cursor: pointer;
   }
