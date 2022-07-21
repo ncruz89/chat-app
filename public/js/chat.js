@@ -39,7 +39,7 @@ const autoscroll = () => {
   // if statement to calculate if we were at the container bottom before new message
   // however function is running after new message was sent so must account for new message height
 
-  if (Window.innerWidth < 480) messages.scrollTop = messages.scrollHeight;
+  if (Window.innerWidth < 480) messages.scrollIntoView(false);
   else {
     containerHeight - newMessageHeight <= scrollOffset;
     messages.scrollTop = messages.scrollHeight;
