@@ -183,6 +183,9 @@ button:disabled {
 }
 
 @media only screen and (max-width: 480px) {
+  html {
+    height: 90vh;
+  }
   .chat__sidebar {
     width: 30vw;
   }
@@ -204,6 +207,9 @@ button:disabled {
   }
   button.formBtn-mobile {
     background: url('../img/send2.png') no-repeat;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
     margin: auto;
     padding: 0 5px 0 5px;
     height: 30px;
@@ -213,6 +219,9 @@ button:disabled {
   }
   button.send-loc-mobile {
     background: url('../img/loc.png') no-repeat;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
     margin: auto;
     padding: 0 0 0 5px;
     height: 30px;
