@@ -8,6 +8,7 @@
     <link rel="icon" href="/img/favicon.png" />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
+  <!-- chat room page -->
   <body>
     <div class="chat">
       <div class="chat__sidebar" id="sidebar"></div>
@@ -29,14 +30,13 @@
           </form>
           <button id="send-loc" class="send-loc-mobile">send location</button>
         </div>
-
-        <!-- <button id="cntBtn">+1</button> -->
       </div>
     </div>
 
     <script id="message-template" type="text/html">
       <div class="message">
         <p>
+          <!-- socket io templates. variables to be rendered -->
           <span class="message__name">{{username}}</span>
           <span class="message__meta">{{createdAt}}</span>
         </p>

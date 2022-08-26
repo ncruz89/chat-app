@@ -1,3 +1,4 @@
+// function to generate message with a timestamp
 const generateMessage = (username, text) => {
   return {
     username,
@@ -6,6 +7,7 @@ const generateMessage = (username, text) => {
   };
 };
 
+// function to generate location message with a timestamp
 const generateLocationMessage = (username, url) => {
   return {
     username,

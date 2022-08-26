@@ -39,6 +39,9 @@ const autoscroll = () => {
   // if statement to calculate if we were at the container bottom before new message
   // however function is running after new message was sent so must account for new message height
 
+  // scrollIntoView default fixed auto scroll issue on mobile
+  // update: it only fixed it when hit go/enter on keyboard. scroll is still offset if you click on the send logo
+
   if (Window.innerWidth < 480) messages.scrollIntoView(true);
   else {
     containerHeight - newMessageHeight <= scrollOffset;
@@ -46,6 +49,7 @@ const autoscroll = () => {
   }
 };
 
+// set variables to be rendered for socket.io message event to server
 socket.on('message', (message) => {
   const html = Mustache.render(messageTemplate, {
     username: message.username,
@@ -56,6 +60,7 @@ socket.on('message', (message) => {
   autoscroll();
 });
 
+// set variables to be rendered for socket.io location message event to server
 socket.on('locationMessage', (message) => {
   const html = Mustache.render(locationTemplate, {
     username: message.username,
@@ -66,6 +71,7 @@ socket.on('locationMessage', (message) => {
   autoscroll();
 });
 
+// set room users for user lists in sidebar socket.io event
 socket.on('roomUsers', ({ room, users }) => {
   const html = Mustache.render(sidebarTemplate, {
     room,
@@ -73,12 +79,8 @@ socket.on('roomUsers', ({ room, users }) => {
   });
   document.querySelector('#sidebar').innerHTML = html;
 });
-// const cntBtn = document.querySelector('#cntBtn');
-// cntBtn.addEventListener('click', () => {
-//   console.log('clicked!');
-//   socket.emit('btnClicked');
-// });
 
+// submit button event listener
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -100,14 +102,18 @@ form.addEventListener('submit', (e) => {
   });
 });
 
+// location button event listener
 locBtn.addEventListener('click', () => {
   if (!navigator.geolocation)
     return alert('Browser does not support geolocation.');
 
+  // disable location button so multiple locations cannot be sent redundantly
   locBtn.setAttribute('disabled', 'disabled');
 
+  // confirm if user wants to share location
   let locationConfirm = confirm('Share Location?');
 
+  // if confirmed emit socket.io send location event to server side
   if (locationConfirm) {
     navigator.geolocation.getCurrentPosition((position) => {
       socket.emit(
@@ -125,6 +131,7 @@ locBtn.addEventListener('click', () => {
   }
 });
 
+// socket.io join emit to server
 socket.emit('join', { username, room }, (error) => {
   if (error) {
     alert(error);

@@ -1,6 +1,6 @@
 const users = [];
 
-// add user
+// add user function with data sanitization
 const addUser = ({ id, username, room }) => {
   // Clean the data
   username = username.trim().toLowerCase();
@@ -30,7 +30,7 @@ const addUser = ({ id, username, room }) => {
   return { user };
 };
 
-// remove user
+// remove user function
 const removeUser = (id) => {
   const index = users.findIndex((user) => user.id === id);
 

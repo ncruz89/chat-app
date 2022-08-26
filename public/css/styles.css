@@ -186,6 +186,8 @@ button:disabled {
   list-style-type: solid circle;
 }
 
+/* media query to relocate send location button to a smaller button on the left side of the text box. allowing more space for the text box*/
+
 @media only screen and (max-width: 480px) {
   .chat__main {
     width: 70vw;
